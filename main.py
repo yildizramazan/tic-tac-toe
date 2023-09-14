@@ -28,10 +28,15 @@ def player_turn(turn):
         if player_move.isdigit() and 0 < int(player_move) < 10 and table[int(player_move)-1]==" ":
             table[int(player_move)-1] = turn
             if check_is_over(player):
+                show_table(table)
                 print(f"{turn} wins")
                 is_game_over = True
+                break
             else:
-                turn = "O" if turn == "X" else "X"
+                if turn == "X":
+                    turn = "O"
+                else:
+                    turn = "X"
         else:
             print("Please enter a valid number. (1-9): ")
             played = False
